@@ -34,4 +34,16 @@
         repo: https://github.com/cloudacademy/static-website-example.git
         dest: /var/www/html/website
 
+        - name: install tomcat pour debian
+      package:
+        name: tomcat9
+      when: ansible_os_family == 'Debian' 
+
+    - name: Démarrage du service
+      service:
+        name: tomcat9
+        state: started
+        enabled: true
+      when: ansible_os_family == 'Debian'
+      
     - reboot:
