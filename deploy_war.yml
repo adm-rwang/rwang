@@ -2,6 +2,7 @@
   tasks:
     - name: Copy sample.war
       ansible.builtin.copy:
-        src: https://github.com/adm-rwang/rwang/blob/e5a706bd7a2eb25d023d0b352ed7d9e42bfc0601/sample.war
+        src: sample.war
         dest: /var/lib/tomcat9/webapps/
         force: true
+      when: ansible_os_family == 'Debian'
