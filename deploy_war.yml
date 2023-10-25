@@ -6,3 +6,9 @@
         dest: /var/lib/tomcat9/webapps/
         force: true
       when: ansible_os_family == 'Debian'
+
+    - name: Démarrage du service
+      service:
+        name: tomcat9
+        state: restarted
+      when: ansible_os_family == 'Debian'
