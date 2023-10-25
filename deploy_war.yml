@@ -1,13 +1,13 @@
 - hosts: all
   tasks:
-    - name: Copy sample.war
+    - name: Copy sample.war sur serveur debian
       ansible.builtin.copy:
         src: sample.war
         dest: /var/lib/tomcat9/webapps/
         force: true
       when: ansible_os_family == 'Debian'
 
-    - name: Démarrage du service
+    - name: redémarrage du service tomcat9 du serveur debian
       service:
         name: tomcat9
         state: restarted
