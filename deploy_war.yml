@@ -5,7 +5,3 @@
         src: https://github.com/adm-rwang/rwang/blob/e5a706bd7a2eb25d023d0b352ed7d9e42bfc0601/sample.war
         dest: /var/lib/tomcat9/webapps/
         force: true
-
-    - service:
-        name: "tomcat9"
-        state: restarted
