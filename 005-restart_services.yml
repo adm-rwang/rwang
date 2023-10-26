@@ -2,5 +2,5 @@
   tasks:
     - name: Redémarrage du service
       service:
-        name: systemd
+        name: my-app
         state: restarted
