@@ -4,3 +4,5 @@
       file:
         path: /home/vagrant/my-app
         state: directory
+        owner: vagrant
+        group: vagrant
