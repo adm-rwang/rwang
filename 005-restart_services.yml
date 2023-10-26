@@ -1,4 +1,5 @@
 - hosts: all
+  tasks:
     - name: Redémarrage du service
       service:
         name: systemd
