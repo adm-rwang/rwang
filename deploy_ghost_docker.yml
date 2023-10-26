@@ -9,7 +9,7 @@
 
     - name: Create a data container
       docker_container:
-        name: Ghost
-        image: https://hub.docker.com/_/ghost/
+        name: "{{ https://hub.docker.com/_/ghost/}}"
+        spource: pull
         volumes:
           - /data
