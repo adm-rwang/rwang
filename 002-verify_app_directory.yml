@@ -1,6 +1,6 @@
 - hosts: all
   tasks:
-    - name: Make sure the directory is empty or does not exist
-      directory:
-        path: /home/vagrant/m-app
-        state: present
+    - name: Make sure the directory my-app exists
+      file:
+        path: /home/vagrant/my-app
+        state: directory
