@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+    - name: Make sure the directory is empty or does not exist
+      directory:
+        path: /home/vagrant/m-app
+        state: present
