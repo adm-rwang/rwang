@@ -1,0 +1,17 @@
+- host: all
+
+ tasks:
+ 
+    - name: Create docker's directory
+     file:
+       path: /data
+        state: directory
+        owner: vagrant
+        group: vagrant
+         
+   - name: Create a data container
+     docker_container:
+       name: Ghost
+       image: https://hub.docker.com/_/ghost/
+       volumes:
+         - /data
