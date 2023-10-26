@@ -1,14 +1,27 @@
 - hosts: all
   tasks:
-    - name: Copy sample.war sur serveur debian
-      ansible.builtin.copy:
-        src: sample.war
-        dest: /var/lib/tomcat9/webapps/
-        force: true
-      when: ansible_os_family == 'Debian'
-
-    - name: redémarrage du service tomcat9 du serveur debian
+    - name: On récupère la liste des paquets installés
+      package_facts:
+    
+    - name: On s'assure d'installer docker sur debian    
+      when: ansible_os_family == 'Debian' and 'docker-ce' not in ansible_packages
+      block:
+        - apt:
+            name: curl
+        - shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg"
+        - shell: 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null'
+        - apt:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+            update_cache: true
+        - user:
+            name: vagrant
+            groups:
+              - docker
+            append: true
+    - name: "On s'assure que docker soit démarré"
       service:
-        name: tomcat9
-        state: restarted
-      when: ansible_os_family == 'Debian'
+        name: docker
+        state: started
