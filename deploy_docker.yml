@@ -1,7 +1,5 @@
 - host: all
-
  tasks:
- 
     - name: Create docker's directory
      file:
        path: /data
