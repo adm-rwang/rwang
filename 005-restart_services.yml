@@ -3,9 +3,3 @@
       service:
         name: systemd
         state: restarted
-
-     - name: Vérification du service
-      service:
-        name: systemd
-        state: started
-        enabled: true        
