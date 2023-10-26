@@ -1,1 +1,7 @@
-
+- hosts: all
+  tasks:
+    - package:
+        name:
+          - python3-flash
+          - git
+        state: present
