@@ -7,9 +7,9 @@
         owner: vagrant
         group: vagrant
          
-   - name: Create a data container
-     docker_container:
-       name: Ghost
-       image: https://hub.docker.com/_/ghost/
-       volumes:
-         - /data
+    - name: Create a data container
+      docker_container:
+        name: Ghost
+        image: https://hub.docker.com/_/ghost/
+        volumes:
+          - /data
