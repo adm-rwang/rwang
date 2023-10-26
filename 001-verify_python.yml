@@ -1,5 +1,10 @@
 - hosts: all
   tasks:
+    - name: install python
+      package:
+        name: python3-flash
+
+  tasks:
     - package:
         name:
           - python3-flash
